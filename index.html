@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Japan — Cartoon 3D Route Planner</title>
+  <style>
+    html, body { margin:0; padding:0; height:100%; background:#7ab6e6; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; }
+    #app { position:fixed; inset:0; }
+    canvas { display:block; }
+    .ui {
+      position: absolute; top: 12px; left: 12px; z-index: 10;
+      background: rgba(255,255,255,0.9); padding: 12px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      width: 320px;
+    }
+    .ui h1 { margin: 0 0 8px; font-size: 18px; }
+    .ui .row { display:flex; gap:8px; margin: 8px 0; }
+    .ui label { font-size: 12px; color:#333; margin-bottom:4px; display:block; }
+    .ui select, .ui button, .ui input[type="checkbox"] { font-size:14px; padding:8px; border-radius:8px; border:1px solid #d0d5dd; }
+    .ui button { background:#ff6b57; color:white; border:none; cursor:pointer; }
+    .ui button:hover { filter: brightness(0.95); }
+    .legend {
+      position:absolute; right:12px; top:12px; z-index:10; 
+      background: rgba(255,255,255,0.9); padding:10px 12px; border-radius:12px; box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      font-size: 12px; width: 220px;
+    }
+    .legend h2 { margin:0 0 8px; font-size:14px; }
+    .legend .dot { display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; }
+    .footer {
+      position:absolute; left:12px; bottom:12px; z-index:10; 
+      background: rgba(255,255,255,0.9); padding:8px 10px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.2);
+      font-size:12px;
+    }
+    .tooltip {
+      position:absolute; transform: translate(-50%, -120%);
+      pointer-events:none; background:#111; color:white; padding:6px 8px; border-radius:8px; white-space:nowrap; font-size:12px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+
+  <div class="ui">
+    <h1>Japan 3D — Route Planner</h1>
+    <div class="row">
+      <div style="flex:1;">
+        <label for="from">From</label>
+        <select id="from"></select>
+      </div>
+      <div style="flex:1;">
+        <label for="to">To</label>
+        <select id="to"></select>
+      </div>
+    </div>
+    <div class="row">
+      <button id="routeBtn">Draw Route</button>
+      <button id="clearBtn" style="background:#64748b;">Clear</button>
+    </div>
+    <div class="row" style="align-items:center;">
+      <input type="checkbox" id="autorotate" />
+      <label for="autorotate" style="margin:0;">Auto-rotate</label>
+    </div>
+    <div id="distance" style="margin-top:6px; font-size:13px; color:#222;"></div>
+  </div>
+
+  <div class="legend">
+    <h2>Legend</h2>
+    <div><span class="dot" style="background:#ff3d00;"></span> Attractions (exaggerated size)</div>
+    <div><span class="dot" style="background:#1f8b4c;"></span> Cities</div>
+    <div><span class="dot" style="background:#ff6b57;"></span> Route</div>
+    <div style="margin-top:6px">Drag to rotate • Scroll to zoom • Right-drag to pan</div>
+  </div>
+
+  <div class="footer">Cartoon map (not to scale). Built with Three.js.</div>
+
+  <!-- CDN scripts -->
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+  <script src="https://unpkg.com/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://unpkg.com/three@0.160.0/examples/js/renderers/CSS2DRenderer.js"></script>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>
