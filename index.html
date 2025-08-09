@@ -31,10 +31,6 @@
       background: rgba(255,255,255,0.9); padding:8px 10px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.2);
       font-size:12px;
     }
-    .tooltip {
-      position:absolute; transform: translate(-50%, -120%);
-      pointer-events:none; background:#111; color:white; padding:6px 8px; border-radius:8px; white-space:nowrap; font-size:12px;
-    }
   </style>
 </head>
 <body>
@@ -73,11 +69,7 @@
 
   <div class="footer">Cartoon map (not to scale). Built with Three.js.</div>
 
-  <!-- Replace your current three CDN tags with these exact versions -->
-<script src="https://unpkg.com/three@0.149.0/build/three.min.js"></script>
-<script src="https://unpkg.com/three@0.149.0/examples/js/controls/OrbitControls.js"></script>
-<script src="https://unpkg.com/three@0.149.0/examples/js/renderers/CSS2DRenderer.js"></script>
-
-  <script src="./js/main.js"></script>
+  <!-- ES Modules -->
+  <script type="module" src="./js/main.mjs"></script>
 </body>
 </html>
